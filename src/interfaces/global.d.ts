@@ -8,16 +8,10 @@ export interface ApiResponse<T> {
 
 export interface configConstants {
   ENV_SERVER: string;
-  API_PORT: number;
+  PORT: number;
   CORS_ORIGINS: string;
   METHODS_ALLOWED: string;
-  DB: {
-    USERNAME: string;
-    PASSWORD: string;
-    HOST: string;
-    DATABASE: string;
-    DEV_DATABASE: string;
-  };
+  DATABASE_URL: string;
   SINTAXIS: {
     TAB: string;
   };

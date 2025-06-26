@@ -1,0 +1,83 @@
+type Character {
+  id: Int!
+  name: String!
+  status: String!
+  species: String!
+  type: String!
+  gender: String!
+  origin: Location!
+  location: Location!
+  image: String!
+  episode: [String!]!
+  url: String!
+  created: String!
+  comments: [Comment!]!
+}
+
+type Location {
+  name: String!
+  url: String!
+}
+
+type CharacterInfo {
+  count: Int!
+  pages: Int!
+  next: String
+  prev: String
+}
+
+type CharacterResponse {
+  info: CharacterInfo!
+  results: [Character!]!
+}
+
+input CharacterFilters {
+  name: String
+  status: String
+  species: String
+  type: String
+  gender: String
+  page: Int
+}
+
+extend type Query {
+  characters(filters: CharacterFilters): CharacterResponse!
+  character(id: Int!): Character
+}
+
+extend type Mutation {
+  clearCache(filters: CharacterFilters): Boolean!
+}
+type Comment {
+  id: ID!
+  characterId: Int!
+  author: String!
+  content: String!
+  rating: Int
+  createdAt: String!
+  updatedAt: String!
+}
+
+input CreateCommentInput {
+  characterId: Int!
+  author: String!
+  content: String!
+  rating: Int
+}
+
+input UpdateCommentInput {
+  author: String
+  content: String
+  rating: Int
+}
+
+extend type Query {
+  comments(characterId: Int!): [Comment!]!
+  comment(id: ID!): Comment
+}
+
+extend type Mutation {
+  createComment(input: CreateCommentInput!): Comment!
+  updateComment(id: ID!, input: UpdateCommentInput!): Comment!
+  deleteComment(id: ID!): Boolean!
+}
