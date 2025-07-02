@@ -11,7 +11,8 @@
     "lint": "eslint \"{src,test}/**/*.ts\" --fix",
     "migrate": "sequelize-cli db:migrate",
     "migrate:undo": "sequelize-cli db:migrate:undo",
-    "seed": "sequelize-cli db:seed:all"
+    "seed": "sequelize-cli db:seed:all",
+    "sequelize": "sequelize --require ts-node/register"
   },
   "keywords": [],
   "author": "",
@@ -49,6 +50,7 @@
     "pg": "^8.16.2",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.7",
+    "sequelize-typescript": "^2.1.6",
     "winston": "^3.17.0"
   }
 }
